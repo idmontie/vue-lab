@@ -15,7 +15,7 @@ export const lessonsBySection: Record<string, Lesson[]> = {
             'React function components run to produce render snapshots. In Vue, setup runs once per component instance. It establishes reactive state and the effects that subscribe to that state; the render effect can then run again when its dependencies change.',
             'A ref is a stable container with a reactive .value property. Read and write .value in JavaScript; top-level refs are unwrapped in templates. A computed ref describes a derived value. Vue tracks what its getter reads, caches its result, and invalidates it when those dependencies change.',
             'In the example, adding an item updates both the count and total without synchronizing a second piece of state. Keep the items as the source of truth. A computed getter should be pure: no network calls, storage writes, or mutations.',
-            'Try it: add a second item with quantity 2 and price 15. Predict the total before running the code. Then change only its quantity. Which computed value becomes stale? Both count and total depend on quantity, so both need fresh values.',
+            'Try it: add a second item with quantity 2 and price 15. Predict the total before running the code. Then change only its quantity. Which computed values depend on quantity and recompute? Both count and total read quantity, so both update when it changes.',
           ],
         },
         {
@@ -561,7 +561,7 @@ export const lessonsBySection: Record<string, Lesson[]> = {
           type: 'text',
           heading: 'The architectural idea',
           body: [
-            'A guard can redirect unauthenticated visitors or stop a navigation with unsaved edits. Return a route location to redirect and false to cancel. Model initialization explicitly so an unresolved session is not mistaken for a logged-out session.',
+            'A guard can redirect unauthenticated visitors or stop a navigation with unsaved edits. Return a route location to redirect and false to cancel. Wait for session initialization explicitly so an unresolved session is not mistaken for a logged-out session.',
             'A client-side guard improves the experience; it cannot protect data. Every protected API must authorize the authenticated request independently. Avoid redirects that repeatedly send the sign-in route back to itself.',
           ],
         },
@@ -714,7 +714,7 @@ export const lessonsBySection: Record<string, Lesson[]> = {
           type: 'text',
           heading: 'The architectural idea',
           body: [
-            'TypeScript types disappear at runtime. A response typed as Project is not validated merely because fetch was cast. Treat external data as unknown, validate it, and translate transport-specific details into your domain model.',
+            'TypeScript types disappear at runtime. Casting a fetch response as Project does not validate it at runtime. Treat external data as unknown, validate it, and translate transport-specific details into your domain model.',
             'Put that work behind a narrow service function. Components then focus on user interaction, while tests can replace the service at its boundary. Keep errors useful: distinguish failed transport, malformed data, and a legitimate empty result.',
           ],
         },
@@ -995,7 +995,7 @@ export const lessonsBySection: Record<string, Lesson[]> = {
             },
             {
               id: '1',
-              text: 'A pure test that missing required answers prevent completion',
+              text: 'A pure test verifying that missing required answers prevent completion',
             },
             {
               id: '2',
